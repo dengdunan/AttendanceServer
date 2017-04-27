@@ -14,9 +14,7 @@ import com.min.attendance.util.ConnectSQL;
 import com.min.attendance.util.ListUtil;
 
 public class AttendanceServlet extends HttpServlet {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private ConnectSQL connetSQL = new ConnectSQL();
 
@@ -104,6 +102,7 @@ public class AttendanceServlet extends HttpServlet {
 		} else {
 			result = "2"; // 说明该用户名已经被占用
 		}
+		connetSQL.closeConnection();
 		return result;
 	}
 

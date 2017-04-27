@@ -10,15 +10,15 @@ import java.sql.Statement;
  * 服务器端连接数据库处理类
  */
 public class ConnectSQL {
-	String driver = "com.mysql.jdbc.Driver";
-	Connection con = null;
-	String url = "jdbc:mysql://localhost:3306/attendance_db";
-	String users = "root";
-	String userpassword = "20134675";
-	ResultSet rResult = null;
-	Statement stmt = null;
+	private String driver = "com.mysql.jdbc.Driver";
+	private Connection con = null;
+	private String url = "jdbc:mysql://localhost:3306/attendance_db";
+	private String users = "root";
+	private String userpassword = "20134675";
+	private ResultSet rResult = null;
+	private Statement stmt = null;
 
-	public Connection connetSQL() {
+	public ConnectSQL() {
 		/* 建立连接 */
 		try {
 			Class.forName(driver);
@@ -30,7 +30,6 @@ public class ConnectSQL {
 			// 数据库操作出错
 			e.printStackTrace();
 		}
-		return con;
 	}
 
 	/*
@@ -39,9 +38,6 @@ public class ConnectSQL {
 	public ResultSet queryData(String sSQL) {
 
 		try {
-			/* 建立连接 */
-			Class.forName(driver);
-			con = DriverManager.getConnection(url, users, userpassword);
 			stmt = con.createStatement();
 			rResult = stmt.executeQuery(sSQL);
 		} catch (Exception e) {
